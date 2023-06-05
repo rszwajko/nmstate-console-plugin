@@ -84,5 +84,10 @@
     "webpack": "^5.68.0",
     "@types/react": "17.0.40"
   },
-  "dependencies": {}
+  "dependencies": {
+    "msw": "^1.2.1"
+  },
+  "msw": {
+    "workerDirectory": "generated"
+  }
 }
