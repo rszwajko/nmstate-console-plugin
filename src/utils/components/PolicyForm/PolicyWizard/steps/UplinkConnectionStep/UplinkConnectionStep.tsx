@@ -10,7 +10,7 @@ import {
   DEFAULT_OVS_BRIDGE_NAME,
 } from '@utils/components/PolicyForm/PolicyWizard/utils/constants';
 import {
-  bridgeManagementInterface,
+  getInitialBridgeManagementInterface,
   getInitialOVSBridgeInterface,
   getInitialOVSBridgeWithBond,
 } from '@utils/components/PolicyForm/PolicyWizard/utils/initialState';
@@ -55,7 +55,7 @@ const UplinkConnectionStep: FC<UplinkConnectionStepProps> = ({ setPolicy, policy
       if (connOption === ConnectionOption.SINGLE_DEVICE) {
         draftPolicy.spec.desiredState.interfaces = [
           getInitialOVSBridgeInterface([{ name: DEFAULT_OVS_BRIDGE_NAME }]),
-          bridgeManagementInterface,
+          getInitialBridgeManagementInterface(),
         ];
         // Preserves user-entered name
         updateBridgeNameAfterOptionChange(draftPolicy, bridgeName);
@@ -65,7 +65,7 @@ const UplinkConnectionStep: FC<UplinkConnectionStepProps> = ({ setPolicy, policy
         const bondName = `bond-${getRandomChars(10)}`;
         draftPolicy.spec.desiredState.interfaces = [
           getInitialOVSBridgeWithBond(bondName, [{ name: DEFAULT_OVS_BRIDGE_NAME }]),
-          bridgeManagementInterface,
+          getInitialBridgeManagementInterface(),
         ];
         // Preserves user-entered name
         updateBridgeNameAfterOptionChange(draftPolicy, bridgeName);

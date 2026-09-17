@@ -52,13 +52,14 @@ export const getInitialOVSBridgeWithBond = (
   return getInitialOVSBridgeInterface(ports);
 };
 
-export const bridgeManagementInterface = {
-  name: DEFAULT_OVS_BRIDGE_NAME,
-  type: InterfaceType.OVS_INTERFACE,
-  state: NETWORK_STATES.Up,
-  ipv4: { enabled: false },
-  ipv6: { enabled: false },
-} as NodeNetworkConfigurationInterface;
+export const getInitialBridgeManagementInterface = () =>
+  ({
+    name: DEFAULT_OVS_BRIDGE_NAME,
+    type: InterfaceType.OVS_INTERFACE,
+    state: NETWORK_STATES.Up,
+    ipv4: { enabled: false },
+    ipv6: { enabled: false },
+  } as NodeNetworkConfigurationInterface);
 
 export const getInitialLinuxBondInterface = (
   bondName: string,
