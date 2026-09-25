@@ -26,7 +26,9 @@
     "helm:lint": "helm lint deployment/nmstate-console-plugin/",
     "helm:build": "mkdir -p tmp && helm package -d tmp deployment/nmstate-console-plugin/",
     "i18n-to-po": "node ./i18n-scripts/i18n-to-po.js",
-    "po-to-i18n": "node ./i18n-scripts/po-to-i18n.js"
+    "po-to-i18n": "node ./i18n-scripts/po-to-i18n.js",
+    "shared-modules:check": "./scripts/check-shared-modules.sh",
+    "shared-modules:sync": "./scripts/align-shared-modules.sh"
   },
   "devDependencies": {
     "@kubevirt-ui/kubevirt-api": "^1.2.2",
