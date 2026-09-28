@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom-v5-compat';
 import classNames from 'classnames';
 
 import { V1beta1NodeNetworkState } from '@kubevirt-ui/kubevirt-api/nmstate';
@@ -16,7 +16,7 @@ type TopologySidebarProps = {
   states: V1beta1NodeNetworkState[];
 };
 const TopologySidebar: FC<TopologySidebarProps> = ({ states }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const queryParams = useQueryParams();
 
@@ -26,7 +26,7 @@ const TopologySidebar: FC<TopologySidebarProps> = ({ states }) => {
   const showSidebar = selectedIDExist || createPolicyDrawer;
 
   const closeDrawer = () => {
-    history.push({ search: new URLSearchParams({}).toString() });
+    navigate({ search: '' });
   };
 
   return (

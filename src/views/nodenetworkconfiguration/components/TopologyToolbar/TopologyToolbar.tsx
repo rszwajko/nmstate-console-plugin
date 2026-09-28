@@ -1,5 +1,4 @@
 import React, { Dispatch, FC, SetStateAction } from 'react';
-import { useHistory } from 'react-router';
 import { useNavigate } from 'react-router-dom-v5-compat';
 import NodeNetworkConfigurationPolicyModel from 'src/console-models/NodeNetworkConfigurationPolicyModel';
 
@@ -33,7 +32,6 @@ const TopologyButton: FC<TopologyToolbarProps> = (props) => {
   const { t } = useNMStateTranslation();
   const navigate = useNavigate();
   const setSelectedNodeFilters = props.setSelectedNodeFilters;
-  const history = useHistory();
 
   const createItems = {
     form: t('From Form'),
@@ -48,8 +46,8 @@ const TopologyButton: FC<TopologyToolbarProps> = (props) => {
     const newParams = new URLSearchParams({ [CREATE_POLICY_QUERY_PARAM]: 'true' });
 
     return type === 'form'
-      ? history.push({ search: newParams.toString() })
-      : history.push(`${baseURL}~new`);
+      ? navigate({ search: newParams.toString() })
+      : navigate(`${baseURL}~new`);
   };
 
   return (
