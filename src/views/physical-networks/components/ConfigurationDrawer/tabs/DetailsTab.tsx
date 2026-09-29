@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom-v5-compat';
+import { Link } from 'react-router';
 
 import DetailItem from '@utils/components/DetailItem/DetailItem';
 import { getName } from '@utils/components/resources/selectors';
