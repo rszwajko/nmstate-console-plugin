@@ -1,6 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const findConditionType = (conditions: any, conditionType: string) =>
+export const findConditionType = (
+  conditions: { type: string; status: string; message?: string }[] | undefined,
+  conditionType: string,
+) =>
   conditions?.find(
-    (condition: { type: string; status: string }) =>
-      condition?.type === conditionType && condition?.status === 'True',
+    (condition) => condition?.type === conditionType && condition?.status === 'True',
   );

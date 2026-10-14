@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 /// <reference types="cypress" />
 import { KUBEADMIN_IDP, KUBEADMIN_USERNAME } from './constants';
 import { ConsoleWindowType } from './types';
@@ -47,8 +46,9 @@ const dismissWelcomeTourIfPresent = () => {
         return;
       }
 
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(TOUR_POLL_MS).then(tryDismiss);
+      cy.then(() => new Cypress.Promise((resolve) => setTimeout(resolve, TOUR_POLL_MS))).then(
+        tryDismiss,
+      );
     });
   };
 

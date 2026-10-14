@@ -33,7 +33,7 @@ export const getInitialOVSBridgeInterface = (
       },
       port: ports,
     },
-  } as NodeNetworkConfigurationInterface);
+  }) as NodeNetworkConfigurationInterface;
 
 export const getInitialOVSBridgeWithBond = (
   bondName: string,
@@ -59,7 +59,7 @@ export const getInitialBridgeManagementInterface = () =>
     state: NETWORK_STATES.Up,
     ipv4: { enabled: false },
     ipv6: { enabled: false },
-  } as NodeNetworkConfigurationInterface);
+  }) as NodeNetworkConfigurationInterface;
 
 export const getInitialLinuxBondInterface = (
   bondName: string,

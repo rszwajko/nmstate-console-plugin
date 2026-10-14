@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 // This dummy file is used to resolve @Console imports from @openshift-console for JEST
 // You can add any exports needed by your tests here
 // Check "moduleNameMapper" in package.json
@@ -16,6 +14,6 @@ export class Dummy extends Error {
  * @export
  * @returns {any[]}
  */
-export function useResolvedExtensions(): any[] {
+export function useResolvedExtensions(): unknown[] {
   return [undefined, undefined, undefined];
 }

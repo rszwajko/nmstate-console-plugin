@@ -15,6 +15,7 @@ export const logNMStateEvent = (
   const segmentAnalytics = getSegmentAnalytics();
 
   if (!segmentAnalytics?.analyticsEnabled) {
+    // eslint-disable-next-line no-console
     console.warn('Analytics not enabled, skipping event:', eventName, properties);
     return;
   }

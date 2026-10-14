@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 import * as path from 'path';
 
 import svgToMiniDataURI from 'mini-svg-data-uri';
@@ -59,7 +57,7 @@ const config: WebpackConfiguration & {
             test: /\.svg$/,
             type: 'asset/inline',
             generator: {
-              dataUrl: (content) => {
+              dataUrl: (content: string) => {
                 content = content.toString();
                 return svgToMiniDataURI(content);
               },
