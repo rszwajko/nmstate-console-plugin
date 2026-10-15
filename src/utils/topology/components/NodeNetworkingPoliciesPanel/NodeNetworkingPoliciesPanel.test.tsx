@@ -43,7 +43,7 @@ const createPolicy = (
         interfaces: [{ name: 'eth0', type: InterfaceType.ETHERNET }],
       },
     },
-  } as V1NodeNetworkConfigurationPolicy);
+  }) as V1NodeNetworkConfigurationPolicy;
 
 const renderPanel = (
   policies: V1NodeNetworkConfigurationPolicy[] | null,

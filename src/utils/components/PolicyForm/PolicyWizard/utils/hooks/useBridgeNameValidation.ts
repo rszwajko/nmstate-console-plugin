@@ -23,7 +23,7 @@ const useBridgeNameValidation: UseBridgeNameValidation = (policy) => {
 
       return basicValidationMessage || duplicateNameErrorMessage || '';
     },
-    [existingInterfaceNames],
+    [existingInterfaceNames, t],
   );
 };
 

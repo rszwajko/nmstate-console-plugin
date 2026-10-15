@@ -1,8 +1,5 @@
 import React, { FC, useMemo } from 'react';
 import { Link } from 'react-router';
-import NodeNetworkConfigurationPolicyModel, {
-  NodeNetworkConfigurationPolicyModelGroupVersionKind,
-} from '../../../../console-models/NodeNetworkConfigurationPolicyModel';
 
 import { IoK8sApiCoreV1Node } from '@kubevirt-ui/kubevirt-api/kubernetes/models';
 import { V1NodeNetworkConfigurationPolicy } from '@kubevirt-ui/kubevirt-api/nmstate';
@@ -12,6 +9,10 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { getResourceUrl } from '@utils/helpers';
 import { useNMStateTranslation } from '@utils/hooks/useNMStateTranslation';
 import { isPolicyAppliedInNode } from '@utils/resources/policies/utils';
+
+import NodeNetworkConfigurationPolicyModel, {
+  NodeNetworkConfigurationPolicyModelGroupVersionKind,
+} from '../../../../console-models/NodeNetworkConfigurationPolicyModel';
 
 import { formatPolicyAffectsDisplay } from './utils/formatPolicyAffectsDisplay';
 

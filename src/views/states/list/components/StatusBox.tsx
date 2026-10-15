@@ -9,8 +9,8 @@ import ListSkeleton from './ListSkeleton';
 
 type StatusBoxProps = PropsWithChildren<{
   loaded: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  error: any;
+  // SDK's WatchK8sResult types error as `any`; we define the shape we actually use
+  error: { message?: string; response?: { status: number } } | null | undefined;
 }>;
 
 const StatusBox: FC<StatusBoxProps> = ({ loaded, error, children }) => {

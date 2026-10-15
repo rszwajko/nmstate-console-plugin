@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import { IoK8sApiCoreV1Node } from '@kubevirt-ui/kubevirt-api/kubernetes/models';
 import { ResourceIcon } from '@openshift-console/dynamic-plugin-sdk';
 import { Modal, ModalBody, SearchInput } from '@patternfly/react-core';
-
 import { getName } from '@utils/components/resources/selectors';
 import { getResourceUrl } from '@utils/helpers';
 import { useNMStateTranslation } from '@utils/hooks/useNMStateTranslation';

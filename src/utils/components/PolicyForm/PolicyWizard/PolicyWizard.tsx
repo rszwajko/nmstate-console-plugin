@@ -67,7 +67,7 @@ const PolicyWizard: FC<PolicyWizardProps> = ({
     } finally {
       setLoading(false);
     }
-  }, [onSubmit, policy, t]);
+  }, [onSubmit, policy]);
 
   return (
     <Wizard
