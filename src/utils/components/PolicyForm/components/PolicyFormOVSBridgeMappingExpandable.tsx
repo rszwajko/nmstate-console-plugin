@@ -43,48 +43,48 @@ const PolicyFormOVSBridgeMappingExpandable: FC<PolicyFormOVSBridgeMappingExpanda
     });
   };
 
-  if (!policy?.spec?.desiredState?.ovn?.[OVN_BRIDGE_MAPPINGS]?.length) return null;
+  const bridgeMappings = policy?.spec?.desiredState?.ovn?.[OVN_BRIDGE_MAPPINGS];
 
-  return policy?.spec?.desiredState?.ovn?.[OVN_BRIDGE_MAPPINGS]?.map((bridgeMapping, index) => {
-    return (
-      <PageSection key={index}>
-        <Flex alignItems={{ default: 'alignItemsFlexEnd' }} marginWidth={20}>
-          <FlexItem grow={{ default: 'grow' }} spacer={{ default: 'spacer4xl' }}>
-            <FormGroup label={t('OVN localnet name')} fieldId="ovs-localnet-name" isRequired>
+  if (!bridgeMappings?.length) return null;
+
+  return (
+    <>
+      {bridgeMappings.map((bridgeMapping, index) => (
+        <PageSection key={index}>
+          <Flex alignItems={{ default: 'alignItemsFlexEnd' }} marginWidth={20}>
+            <FlexItem grow={{ default: 'grow' }} spacer={{ default: 'spacer4xl' }}>
+              <Title headingLevel="h6" size="md">
+                {t('OVN localnet name')}
+              </Title>
               <TextInput
-                type="text"
-                id="ovs-localnet-name"
-                name="ovs-localnet-name"
                 value={bridgeMapping?.localnet}
                 onChange={onChange(index, 'localnet')}
                 isRequired
               />
-            </FormGroup>
-          </FlexItem>
-          <FlexItem grow={{ default: 'grow' }}>
-            <FormGroup label={t('OVS bridge name')} fieldId="ovs-bridge-name" isRequired>
+            </FlexItem>
+            <FlexItem grow={{ default: 'grow' }}>
+              <Title headingLevel="h6" size="md">
+                {t('OVS bridge name')}
+              </Title>
               <TextInput
-                type="text"
-                id="ovs-bridge-name"
-                name="ovs-bridge-name"
                 value={bridgeMapping?.bridge}
                 onChange={onChange(index, 'bridge')}
                 isRequired
               />
-            </FormGroup>
-          </FlexItem>
-          <FlexItem>
-            <Button
-              icon={<MinusCircleIcon />}
-              variant={ButtonVariant.plain}
-              aria-label={t('Remove')}
-              onClick={() => onRemove(index)}
-            />
-          </FlexItem>
-        </Flex>
-      </PageSection>
-    );
-  });
+            </FlexItem>
+            <FlexItem>
+              <Button
+                icon={<MinusCircleIcon />}
+                variant={ButtonVariant.plain}
+                aria-label={t('Remove')}
+                onClick={() => onRemove(index)}
+              />
+            </FlexItem>
+          </Flex>
+        </PageSection>
+      ))}
+    </>
+  );
 };
 
 export default PolicyFormOVSBridgeMappingExpandable;
