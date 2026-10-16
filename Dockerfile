@@ -1,28 +1,36 @@
 # Builder container
-FROM registry.ci.openshift.org/ocp/builder:rhel-9-base-nodejs-openshift-4.22 AS build
+FROM registry.ci.openshift.org/ocp/builder:rhel-9-base-nodejs-openshift-4.19 AS build
 
 # Copy app source
 COPY . /opt/app-root/src/app
 WORKDIR /opt/app-root/src/app
 
-# Run install as supper tux
 USER 0
-RUN npm ci && \
-    npm install --no-save @esbuild/linux-x64 && \
-    npm run build
+
+# prevent npm registry timeouts when building OKD images
+# use 10min fetch timeout and up to 1min between retries
+# retry config details: https://www.npmjs.com/package/retry
+RUN npm config set loglevel http 
+RUN npm config set fetch-timeout 600000
+RUN npm config set fetch-retries 9
+RUN npm config set fetch-retry-factor 2
+
+# Install dependencies and build
+ENV CYPRESS_INSTALL_BINARY=0
+RUN npm clean-install --ignore-scripts --no-audit && npm run build
 
 # Web server container
-FROM registry.access.redhat.com/ubi9/nginx-120
+FROM registry.ci.openshift.org/ocp/4.19:base-rhel9
 
-# Use none-root user
+RUN INSTALL_PKGS="nginx" && \
+    dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    rpm -V $INSTALL_PKGS && \
+    dnf -y clean all --enablerepo='*' && rm -rf /var/cache/dnf/* && \
+    chown -R 1001:0 /var/lib/nginx /var/log/nginx /run && \
+    chmod -R ug+rwX /var/lib/nginx /var/log/nginx /run
+
+# Use non-root user
 USER 1001
-
-# Set nginx configuration
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# When using ubi9/nginx-120 defaults:
-#  listen       8080 default_server;
-#  root         /opt/app-root/src;
 
 COPY --from=build /opt/app-root/src/app/dist /opt/app-root/src
 
