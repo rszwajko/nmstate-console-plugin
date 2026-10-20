@@ -31,6 +31,7 @@
     "shared-modules:sync": "./scripts/align-shared-modules.sh"
   },
   "dependencies": {
+    "@kubevirt-ui-ext/kubevirt-api": "2.1.5",
     "@openshift-console/dynamic-plugin-sdk": "4.19.1",
     "@patternfly/react-core": "6.2.2",
     "@patternfly/react-icons": "6.2.2",
@@ -53,7 +54,6 @@
     "use-immer": "^0.11.0"
   },
   "devDependencies": {
-    "@kubevirt-ui/kubevirt-api": "^1.2.2",
     "@openshift-console/dynamic-plugin-sdk-webpack": "4.19.0",
     "@openshift/dynamic-plugin-sdk": "~5.0.1",
     "@openshift/dynamic-plugin-sdk-webpack": "4.0.2",
@@ -74,6 +74,7 @@
     "esbuild-loader": "^4.5.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^4.1.0",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -98,7 +99,6 @@
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "^5.2.6"
   },
-
   "overrides": {
     "react": "$react",
     "@patternfly/react-core": "$@patternfly/react-core"
