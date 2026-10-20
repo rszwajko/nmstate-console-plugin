@@ -47,7 +47,6 @@ const dismissWelcomeTourIfPresent = () => {
         return;
       }
 
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(TOUR_POLL_MS).then(tryDismiss);
     });
   };
