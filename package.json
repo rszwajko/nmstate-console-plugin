@@ -34,7 +34,6 @@
     "shared-modules:sync": "./scripts/align-shared-modules.sh"
   },
   "devDependencies": {
-    "@kubevirt-ui/kubevirt-api": "^1.4.2",
     "@openshift-console/dynamic-plugin-sdk-internal": "4.23.0-prerelease.5",
     "@openshift-console/dynamic-plugin-sdk-webpack": "4.23.0-prerelease.5",
     "@openshift/dynamic-plugin-sdk": "9.1.0",
@@ -54,6 +53,7 @@
     "esbuild-loader": "^4.5.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^4.1.0",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -80,6 +80,7 @@
     "webpack-dev-server": "^5.2.6"
   },
   "dependencies": {
+    "@kubevirt-ui-ext/kubevirt-api": "2.1.5",
     "@openshift-console/dynamic-plugin-sdk": "4.23.0-prerelease.5",
     "@patternfly/react-catalog-view-extension": "6.5.0",
     "@patternfly/react-component-groups": "6.5.0",

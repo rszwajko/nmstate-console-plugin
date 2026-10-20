@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useMemo, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
-import { IoK8sApiCoreV1Node } from '@kubevirt-ui/kubevirt-api/kubernetes/models';
+import type { IoK8sApiCoreV1Node } from '@kubevirt-ui-ext/kubevirt-api/kubernetes';
 import { Flex, FlexItem } from '@patternfly/react-core';
 import {
   ModelKind,
@@ -9,12 +9,12 @@ import {
   Visualization,
   VisualizationProvider,
 } from '@patternfly/react-topology';
-
 import NodeNetworkingPoliciesPanel from '@utils/topology/components/NodeNetworkingPoliciesPanel/NodeNetworkingPoliciesPanel';
 import { SELECTED_ID_QUERY_PARAM } from '@utils/topology/components/TopologySidebar/constants';
 import { GRAPH_POSITIONING_EVENT, NODE_POSITIONING_EVENT } from '@utils/topology/utils/constants';
 import { componentFactory, layoutFactory } from '@utils/topology/utils/factory';
 import { saveNodePositions } from '@utils/topology/utils/position';
+
 import NodeTopology from './components/NodeTopology/NodeTopology';
 
 import './components/NodeTopology/NodeTopology.scss';

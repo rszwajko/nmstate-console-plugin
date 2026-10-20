@@ -6,7 +6,7 @@ import {
   InterfaceType,
   NodeNetworkConfigurationInterface,
   NodeNetworkConfigurationInterfaceBondMode,
-} from '@kubevirt-ui/kubevirt-api/nmstate';
+} from '@kubevirt-ui-ext/kubevirt-api/nmstate';
 import { RedExclamationCircleIcon } from '@openshift-console/dynamic-plugin-sdk';
 import {
   Checkbox,
