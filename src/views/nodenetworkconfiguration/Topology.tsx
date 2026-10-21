@@ -133,10 +133,12 @@ const Topology: FC = () => {
     visualization.fromModel(topologyModel);
   }, [
     states,
+    available,
+    navigate,
+    visualization,
     statesLoaded,
     statesError,
     selectedNodeFilters,
-    creatingPolicySignal.value,
     creatingPolicyNodesNames,
   ]);
 
