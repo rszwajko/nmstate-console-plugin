@@ -76,7 +76,7 @@ const Topology: FC = () => {
     namespaced: false,
   });
 
-  const { available } = categorizeEnactments(enhancments);
+  const available = useMemo(() => categorizeEnactments(enhancments).available, [enhancments]);
 
   const nodeNames: string[] = useMemo(
     () => states?.map((state) => state.metadata.name) || [],
@@ -130,12 +130,14 @@ const Topology: FC = () => {
     visualization.setFitToScreenOnLayout(!recenterScreenLayout);
     visualization.fromModel(topologyModel);
   }, [
-    states,
-    statesLoaded,
-    statesError,
-    selectedNodeFilters,
-    creatingPolicySignal.value,
+    available,
     creatingPolicyNodesNames,
+    navigate,
+    selectedNodeFilters,
+    states,
+    statesError,
+    statesLoaded,
+    visualization,
   ]);
 
   // Re-run fit after mount to ensure correct scale when container size stabilizes (e.g. navigation from create flow)

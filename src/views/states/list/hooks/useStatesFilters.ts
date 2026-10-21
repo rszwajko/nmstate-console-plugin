@@ -113,10 +113,10 @@ const useStatesFilters = (states: V1beta1NodeNetworkState[]): UseStatesFiltersRe
   const selectedFilters: SelectedFilters = useMemo(
     () =>
       Object.fromEntries(
-        Object.entries(filters).map(([key, val]) => [
-          key,
-          Array.isArray(val) ? val : val ? [val] : [],
-        ]),
+        Object.entries(filters).map(([key, val]) => {
+          if (Array.isArray(val)) return [key, val];
+          return [key, val ? [val] : []];
+        }),
       ),
     [filters],
   );
