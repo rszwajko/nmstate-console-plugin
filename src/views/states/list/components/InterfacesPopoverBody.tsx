@@ -45,7 +45,7 @@ const InterfacesPopoverBody: FC<InterfacesPopoverBodyProps> = ({
       setSelectedInterfaceName(nodeNetworkState, iface);
       hide();
     },
-    [hide],
+    [hide, nodeNetworkState, setSelectedInterfaceName],
   );
 
   return (
