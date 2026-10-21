@@ -7,6 +7,8 @@ import {
 
 import { ALL_NAMESPACES_SESSION_KEY } from './constants';
 
+export const nmStateConsole = console;
+
 export const isEmpty = (obj) =>
   [Array, Object].includes((obj || {}).constructor) && !Object.entries(obj || {}).length;
 
@@ -76,4 +78,39 @@ export const asAccessReview = (
     subresource,
     verb,
   };
+};
+
+export const getRandomChars = (len = 6): string => {
+  return Math.random()
+    .toString(36)
+    .replace(/[^a-z0-9]+/g, '')
+    .substr(1, len);
+};
+
+export const labelsToParams = (labels: Record<string, string>) =>
+  Object.entries(labels)
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join('&');
+
+export const columnSorting = <T>(
+  data: T[],
+  direction: 'asc' | 'desc' | null,
+  pagination: { startIndex: number; endIndex: number },
+  sortField?: string,
+): T[] => {
+  if (!data || !direction || !sortField) return data;
+
+  const sorted = [...data].sort((a, b) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const aValue = sortField.split('.').reduce((obj, key) => obj?.[key], a as any);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const bValue = sortField.split('.').reduce((obj, key) => obj?.[key], b as any);
+
+    if (aValue < bValue) return direction === 'asc' ? -1 : 1;
+    if (aValue > bValue) return direction === 'asc' ? 1 : -1;
+    return 0;
+  });
+
+  const { startIndex, endIndex } = pagination;
+  return sorted.slice(startIndex, endIndex);
 };

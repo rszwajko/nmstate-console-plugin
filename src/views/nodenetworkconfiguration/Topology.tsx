@@ -124,8 +124,10 @@ const Topology: FC = () => {
     statesLoaded,
     statesError,
     selectedNodeFilters,
-    creatingPolicySignal.value,
     creatingPolicyNodesNames,
+    available,
+    visualization,
+    history,
   ]);
 
   if (statesError && statesError?.response?.status === 403)
