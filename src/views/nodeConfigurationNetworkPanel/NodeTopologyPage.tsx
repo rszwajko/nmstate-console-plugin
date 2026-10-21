@@ -53,8 +53,8 @@ const NodeTopologyPage: FC<NodeTopologyProps> = ({ obj }) => {
       },
     });
     return visualization;
-    // No dependencies, we only want this to initialize once
-  }, []);
+    // No real dependencies (navigate is stable), we only want this to initialize once
+  }, [navigate]);
 
   return (
     <Flex

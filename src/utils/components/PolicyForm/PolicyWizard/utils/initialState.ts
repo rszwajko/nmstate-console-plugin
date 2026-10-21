@@ -33,7 +33,7 @@ export const getInitialOVSBridgeInterface = (
       },
       port: ports,
     },
-  } as NodeNetworkConfigurationInterface);
+  }) as NodeNetworkConfigurationInterface;
 
 export const getInitialOVSBridgeWithBond = (
   bondName: string,

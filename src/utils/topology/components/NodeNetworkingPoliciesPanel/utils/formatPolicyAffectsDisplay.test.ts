@@ -17,7 +17,7 @@ const createPolicy = (
         interfaces,
       },
     },
-  } as V1NodeNetworkConfigurationPolicy);
+  }) as V1NodeNetworkConfigurationPolicy;
 
 describe('formatPolicyAffectsDisplay', () => {
   it('returns NO_DATA_DASH when policy has no interfaces', () => {
