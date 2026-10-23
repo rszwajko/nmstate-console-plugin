@@ -96,7 +96,7 @@ const PoliciesList: FC = () => {
           loadError={policiesLoadError && enactmentsError}
           Row={PolicyRow}
           rowData={{ selectPolicy: onSelectPolicy, enactments }}
-          NoDataEmptyMsg={() => <PolicyListEmptyState />}
+          NoDataEmptyMsg={PolicyListEmptyState}
         />
 
         <PolicyEnactmentsDrawer
